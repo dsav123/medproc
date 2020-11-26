@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% load static %}
+		<title>About page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<span class="symbol"><img src="{%  static 'images/logo.svg' %}" alt="" /></span><span class="title">MedProc</span>
+								</a>
+
+                            <!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index">Home</a></li>
+							<li><a href="about">About</a></li>
+							<li><a href="upload">Start report</a></li>
+							<li><a href="datapage">Data</a></li>
+                            <li><a href="reportselect">Select Report</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>About this project</h1>
+							<span class="image main"><img src="https://www.stockvault.net/data/2019/08/29/269015/preview16.jpg" alt="" /></span>
+							<p>While there exists extensive studies and surveys for state or nationwide medical issues,
+                                there are few tools available for local practices to use to analyse their own personal set of data.
+                                As each practice supports a region of different climates and cultural backgrounds,
+                                the typical type of cases they encounter may differ from practice to practice.
+                                From my research, while local practices have access to a wealth of data,
+                                they do not have the tools available to them to process this data. </p>
+
+                            <p>As a result, this tool will process this medical data and offer the user an easy to use
+                                interface which can break down data and identify trends. This app will be capable of accepting
+                                medical data from local medical practices, visualising it and identifying trends.
+                                Initially, the tool would accept data from an excel sheet with anonymised records of patients.
+                                A basic data sheet would include the date of appointment, their symptoms and any diagnosis.
+                                Columns will be used to separate multiple symptoms and each row would represent the instance
+                                of the patients visit. </p>
+
+                            <p> This tool is aimed to be a low cost and lightweight solution which would give small practises big data processing capabilities
+                            normally only afforded to large scale hospitals and dedicated analyst firms</p>
+</p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+                    <footer style="text-align: center; background-color: black; position: fixed; left: 0; bottom: 0; width: 100%; color: white">
+                        MedProc
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{%  static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'assets/js/util.js' %}"></script>
+			<script src="{%  static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

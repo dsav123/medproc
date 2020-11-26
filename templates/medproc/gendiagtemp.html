@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% load static %}
+		<title>General Diagnosis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<span class="symbol"><img src="{%  static 'images/logo.svg' %}" alt="" /></span><span class="title">MedProc</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index">Home</a></li>
+							<li><a href="about">About</a></li>
+							<li><a href="upload">Start report</a></li>
+							<li><a href="datapage">Data</a></li>
+                            <li><a href="reportselect">Select Report</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Diagnosis Overview</h1>
+							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+                            <p>This is an overview of all the appointments between your chosen dates. The numbers on the Y-axis represent how many appointments were recorded at that particular date</p>
+                            <p>Currently, the average occurrence of a diagnosis recorded is {{ forma }} with a median of {{ med }}.</p>
+                        </div>
+                    </div>
+                        {% block content %}
+                          <div id="container" style="width: 75%; margin: auto; display: block;;">
+                            <canvas id="bar-chart" style=""></canvas>
+                          </div>
+
+
+                          <script>
+                              var dynamicColors = function() {
+                                var r = Math.floor(Math.random() * 255);
+                                var g = Math.floor(Math.random() * 255);
+                                var b = Math.floor(Math.random() * 255);
+                                return "rgb(" + r + "," + g + "," + b + ")";
+                            };
+
+
+                            var colour = [];
+                            for (var i in {{ value }}) {
+                                colour.push(dynamicColors());
+                            }
+
+                            var config = {
+                              type: 'bar',
+                              data: {
+                                datasets: [{
+                                  data: {{ value|safe }},
+                                  backgroundColor: colour,
+                                  label: 'Diagnosis'
+                                }],
+                                labels: {{ key|safe }}
+                              },
+                              options: {
+                                responsive: true,
+                                  scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                  }
+                              }
+                            };
+
+                            window.onload = function() {
+                              var ctx = document.getElementById('bar-chart').getContext('2d');
+                              window.myBar = new Chart(ctx, config);
+                            };
+
+                          </script>
+                        {% endblock %}
+
+                    <div style="text-align: center">
+                        <a href="altgendiag">Check this graph out at as doughnut!</a>
+                    </div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+                        <div style="text-align: center">
+                            <p> <a href="gendatetemp">Appointment Overview</a> |
+                                <a href="gensympttemp">Symptom Overview</a> |
+                                <a href="gendiagtemp">Diagnosis Overview</a> |
+                                <a href="choosesympt">Specific Symptom</a> |
+                                <a href="choosediag">Specific Diagnosis</a>
+                            </p>
+                        </div>
+					</footer>
+                    <footer style="text-align: center; background-color: black; position: fixed; left: 0; bottom: 0; width: 100%; color: white">
+                        MedProc
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{%  static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'assets/js/util.js' %}"></script>
+			<script src="{%  static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

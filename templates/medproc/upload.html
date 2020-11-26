@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% load static %}
+		<title>Start Report</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<span class="symbol"><img src="{%  static 'images/logo.svg' %}" alt="" /></span><span class="title">MedProc</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index">Home</a></li>
+							<li><a href="about">About</a></li>
+							<li><a href="upload">Start report</a></li>
+							<li><a href="datapage">Data</a></li>
+                            <li><a href="reportselect">Select Report</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Start Report</h1>
+							<span class="image main"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80g" alt="" height = '600px'/></span>
+                            <p>To get started with building your customised report you will first need to upload an excel file (.xlsx).
+                            This file will have 3 columns, the first will be the date column which stores the dates of each appointment.
+                            The second will contain the symptoms discovered and recorded in the consultation. The third and last column
+                            shall contain the doctors diagnosis. There is no need for headings to be contained in the excel file. </p>
+
+                            <p>For the interest of patient privacy, there are no features that can take into account specific patient identifies. beyond targeting specific dates,
+                            symptoms and diagnosis, the data contained in this result with be general and anonymous. There is a feature on the data page (which you can find from the
+                            menu or the home page) that will allow you to purge the current database of records to ensure your data is not stored
+                            and kept private.</p>
+
+                            <p>When you have finished with your current dataset, you may navigate back to this page to upload another dataset, however your old dataset will be lost.</p>
+
+                            <form method="post" enctype="multipart/form-data" style="text-align:center">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit">Upload</button>
+                            </form>
+                        </div>
+					</div>
+
+				<!-- Footer -->
+                    <footer style="text-align: center; background-color: black; position: fixed; left: 0; bottom: 0; width: 100%; color: white">
+                        MedProc
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{%  static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'assets/js/util.js' %}"></script>
+			<script src="{%  static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

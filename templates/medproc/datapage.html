@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+        {% load static %}
+		<title>Data Index</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<span class="symbol"><img src="{%  static 'images/logo.svg' %}" alt="" /></span><span class="title">MedProc</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index">Home</a></li>
+							<li><a href="about">About</a></li>
+							<li><a href="upload">Start report</a></li>
+							<li><a href="datapage">Data</a></li>
+                            <li><a href="reportselect">Select Report</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Data index</h1>
+							<span class="image main"><img src=https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1321&q=80" alt="" height="400px" /></span>
+                            <p>Here you can find the current raw contents of MedProc's database. This is the data that will
+                                be used to generate reports and insights. When uploading a new file the current database will be
+                                cleared to prevent data contamination with other unrelated data. <b>If you suspect there are inconsistencies with
+                            the report and the data you have uploaded, go through the data here to manually verify that the data is uncontaminated
+                                    otherwise simply upload a fresh data file the reset the database.</b></p>
+                            <div class="table-wrapper">
+                                <table id="tablearea">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Symptom</th>
+                                            <th>Diagnosis</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+
+                            </div>
+                        </div>
+					</div>
+
+				<!-- Footer -->
+                    <footer style="text-align: center; background-color: black; position: fixed; left: 0; bottom: 0; width: 100%; color: white">
+                        MedProc
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{%  static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'assets/js/util.js' %}"></script>
+			<script src="{%  static 'assets/js/main.js' %}"></script>
+            <script type="text/javascript">
+                var table = document.getElementById('tablearea');
+                var array1 = {{ list1|safe }};
+                var array2 = {{ list2|safe }};
+                var array3 = {{ list3|safe }};
+
+                for (var i = 0; i < array1.length; i++){
+
+                    var tr = document.createElement('tr');
+
+                    var td1 = document.createElement('td');
+                    var td2 = document.createElement('td');
+                    var td3 = document.createElement('td');
+
+                    var text1 = document.createTextNode(array1[i]);
+                    var text2 = document.createTextNode(array2[i]);
+                    var text3 = document.createTextNode(array3[i]);
+
+                    td1.appendChild(text1);
+                    td2.appendChild(text2);
+                    td3.appendChild(text3);
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tr.appendChild(td3);
+
+                    table.appendChild(tr);
+                }
+                document.body.appendChild(table);
+            </script>
+	</body>
+</html>

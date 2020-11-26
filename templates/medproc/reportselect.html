@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% load static %}
+		<title>Report Select</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<span class="symbol"><img src="{%  static 'images/logo.svg' %}" alt="" /></span><span class="title">MedProc</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index">Home</a></li>
+							<li><a href="about">About</a></li>
+							<li><a href="upload">Start report</a></li>
+							<li><a href="datapage">Data</a></li>
+                            <li><a href="reportselect">Select Report</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Select Desired Report</h1>
+							<div style="text-align: center; display: block; scale: 75%"><img src="https://cannabisdoctorsaustralia.com.au/wp-content/uploads/2020/09/Untitled-design-2020-09-04T124202.387-1-1024x576-1.jpg" alt="" /></div>
+
+                            <p>Below you can choose what kind of data you'd like to view. Each view will have a number of graphs you can swap between to visuals the data to your preference
+                            There are 3 general views
+
+                            <li>General Date Report - This will show a breakdown of the data date by date, showing how many appointments were taken on each day</li>
+                            <li>General Symptom Report - This will show a breakdown of the most common symptoms and the number of times they appear in the data</li>
+                            <li>General Diagnosis Report - This will show a breakdown of the most common diagnosis and the number of times they appear in the data</li>
+                            <br>
+                            Furthermore there are 2 specific views that allow a deep dive into a particular data point - these are the
+                            <li>Specific Symptom Report</li>
+                            <li>Specific Diagnosis Report</li>
+                            These reports will allow you to single out a specific symptom or diagnosis to further study, showing the number of times it has occurred on what days.
+                            </p>
+
+                            <p>Furthermore you can also refine the their chosen report by choose a date range, when inputted the reports will only generate using data that falls between the start and end date</p>
+                            <p>When entering dates please make sure to use the "YYYY-MM-DD" format</p>
+                            <b>{{ mess }}</b>
+                            <form method="POST" class="post-form">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="save btn btn-default">Save</button>
+                            </form>
+                            <br>
+                            <p>Users can manually check and verify the reports by looking through the Data Index will shows a list of all the data contained in the uploaded excel file</p>
+                        </div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+					</footer>
+                    <footer style="text-align: center; background-color: black; position: relative; left: 0; bottom: 0; width: 100%; color: white">
+                        MedProc
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{%  static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'assets/js/util.js' %}"></script>
+			<script src="{%  static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% load static %}
+		<title>Specsymp</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<span class="symbol"><img src="{%  static 'images/logo.svg' %}" alt="" /></span><span class="title">MedProc</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index">Home</a></li>
+							<li><a href="about">About</a></li>
+							<li><a href="upload">Start report</a></li>
+							<li><a href="datapage">Data</a></li>
+                            <li><a href="reportselect">Select Report</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Spec sympt</h1>
+							<span class="image main"><img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="" height="400"/></span>
+
+                        </div>
+                    </div>
+                        {% block content %}
+                          <div id="container" style="width: 75%; margin: auto; display: block;">
+                          <p>This is an overview of the {{ diag }}'s occurrences between your chosen dates. The numbers on the Y-axis represent how many appointments were recorded at that particular date.</p>
+                        <p>Currently, on average the number of times {{ diag }}'s occurs is {{ forma }} with a median of {{ med }}.</p>
+                            <canvas id="bar-chart" style=""></canvas>
+                          </div>
+
+
+                          <script>
+                              var dynamicColors = function() {
+                                var r = Math.floor(Math.random() * 255);
+                                var g = Math.floor(Math.random() * 255);
+                                var b = Math.floor(Math.random() * 255);
+                                return "rgb(" + r + "," + g + "," + b + ")";
+                            };
+
+
+                            var colour = [];
+                            for (var i in {{ value }}) {
+                                colour.push(dynamicColors());
+                            }
+
+                            var config = {
+                              type: 'bar',
+                              data: {
+                                datasets: [{
+                                  data: {{ value|safe }},
+                                  backgroundColor: colour,
+                                  label: 'Symptom by Date'
+                                }],
+                                labels: {{ key|safe }}
+                              },
+                              options: {
+                                responsive: true,
+                                  scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                  }
+                              }
+                            };
+
+                            window.onload = function() {
+                              var ctx = document.getElementById('bar-chart').getContext('2d');
+                              window.myBar = new Chart(ctx, config);
+                            };
+
+                          </script>
+                        {% endblock %}
+
+
+            <div class="table-wrapper">
+
+                                <table id="tablearea">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Symptom</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+
+            </div>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+                        <div style="text-align: center">
+                            <p> <a href="gendatetemp">Appointment Overview</a> |
+                                <a href="gensympttemp">Symptom Overview</a> |
+                                <a href="gendiagtemp">Diagnosis Overview</a> |
+                                <a href="choosesympt">Specific Symptom</a> |
+                                <a href="choosediag">Specific Diagnosis</a>
+                            </p>
+                        </div>
+					</footer>
+                    <footer style="text-align: center; background-color: black; position: fixed; left: 0; bottom: 0; width: 100%; color: white">
+                        MedProc
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{%  static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'assets/js/util.js' %}"></script>
+			<script src="{%  static 'assets/js/main.js' %}"></script>
+            <div style="margin: 100px"><p>Below is a table containing a matrix of pearson correlations.</p>
+                    <p>The pearson correlation measures the dependence between two values, here we have measured your chosen diagnosis against all the symptoms found in this date range.
+                        The pearson correlation has a value between 1 and -1, for positive values, the higher the correlation, the stronger the chance there is a relationship between the symptom and its diagnosis
+                    for negative values, there stronger the chance there is an opposite relationship between the symptom and diagnosis.</p>
+            </div>
+            <script type="text/javascript">
+                var table = document.getElementById('tablearea');
+                var array1 = {{ key1|safe }};
+                var array2 = {{ value1|safe }};
+
+                for (var i = 0; i < array1.length; i++){
+
+                    var tr = document.createElement('tr');
+
+                    var td1 = document.createElement('td');
+                    var td2 = document.createElement('td');
+
+                    var text1 = document.createTextNode(array1[i]);
+                    var text2 = document.createTextNode(array2[i]);
+
+                    td1.appendChild(text1);
+                    td2.appendChild(text2);
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+
+                    table.appendChild(tr);
+                }
+                document.body.appendChild(table);
+            </script>
+
+	</body>
+</html>

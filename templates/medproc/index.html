@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% load static %}
+		<title>Index page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index" class="logo">
+									<span class="symbol"><img src="{%  static 'images/logo.svg' %}" alt="" /></span><span class="title">MedProc</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index">Home</a></li>
+							<li><a href="about">About</a></li>
+							<li><a href="upload">Start report</a></li>
+							<li><a href="datapage">Data</a></li>
+                            <li><a href="reportselect">Select Report</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>Welcome to MedProc, <br>
+                                    your data analysis tool.</h1>
+							</header>
+                            <span class="image main"><img src="https://cdn.pixabay.com/photo/2017/10/04/09/56/laboratory-2815641_960_720.jpg" alt=""/></span>
+                            <p>MedProc is a tool to be used in the Medical profession, you can upload an excel file containing details
+                            appointments, patient symptoms and diagnosis. These reports will allow you to colourfully visualise your data and
+                            gain insights into trends and anomalies. MedProc brings the cloud technology to enable medical practises from anywhere
+                            and at any size to analyze their data without investing in expensive hardware.</p>
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="{%  static 'images/pic01.jpg' %}" alt="" />
+									</span>
+									<a href="about">
+										<h2>About</h2>
+										<div class="content">
+											<p>Learn about this project and how it works.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="{%  static 'images/pic02.jpg' %}" alt="" />
+									</span>
+									<a href="upload">
+										<h2>Start</h2>
+										<div class="content">
+											<p>Get started generating reports from your data.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="{%  static 'images/pic03.jpg' %}" alt="" />
+									</span>
+									<a href="datapage">
+										<h2>Data</h2>
+										<div class="content">
+											<p>Have a tabulated view of data currently available</p>
+										</div>
+									</a>
+								</article>
+							</section>
+                            <br>
+                            <p>To learn about the project, click on About. To get started with generating a new report,
+                                    click on start. To view the current database, click on Data</p>
+						</div>
+
+					</div>
+
+				<!-- Footer -->
+					<footer style="text-align: center; background-color: black; position: relative; left: 0; bottom: 0; width: 100%; color: white">
+                        MedProc
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+            <script src="{%  static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'assets/js/util.js' %}"></script>
+			<script src="{%  static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>
